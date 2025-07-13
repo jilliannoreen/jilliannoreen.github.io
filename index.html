@@ -1,71 +1,268 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The future portfolio of Jillian Noreen — still cooking, probably over-designed, definitely under construction."/>
+    <title>~/jilliannoreen</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='80'%3E%F0%9F%92%BB%3C/text%3E%3C/svg%3E"/>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        @apply text-green-400 font-mono h-screen flex items-center justify-center p-4 overflow-hidden;
+        background: linear-gradient(
+          270deg,
+          #ffd6e0,
+          #e0f7fa,
+          #fce4ec,
+          #e8eaf6,
+          #e0f2f1
+        );
+        background-size: 1000% 1000%;
+        animation: gradientShift 20s ease infinite;
+      }
 
-<head>
-    <meta charset="utf-8">
-    <meta name="google" content="notranslate">
-    <meta http-equiv="Content-Language" content="en">
-    <title>Databricks</title>
-    <script id="__databricks_react_script"></script>
-    <script>
-        window.__DATABRICKS_SAFE_FLAGS__={"databricks.fe.infra.fixConfigPrefetch":true,"databricks.fe.infra.useReact18":true,"databricks.fe.infra.useNewFetchSettingsFunc":true,"databricks.fe.infra.useApollo3_12":false,"databricks.fe.infra.shouldNotAwaitConfigForHomepage":false,"databricks.fe.infra.disableShadowRoot_mlflow":false,"databricks.fe.infra.bootstrapAccountConsoleFromMonolith":false,"databricks.fe.infra.disableShadowRoot_redash":false,"databricks.fe.infra.useReact18NewAPI":false,"databricks.fe.infra.enableStartupAppInitSNRAlerting":true,"databricks.fe.infra.enableImplicitContext":false,"databricks.fe.infra.enableBlockingTelemetryByUserAgent":true},window.__DATABRICKS_CONFIG__={"tabStartTimestampMillis":1747481750006,"isCuttingEdge":false,"publicPath":{"feature-store":"https://ui-assets.cloud.databricks.com/","jaws":"https://ui-assets.cloud.databricks.com/","mlflow":"https://ui-assets.cloud.databricks.com/","monolith":"https://ui-assets.cloud.databricks.com/"},"isSpogDomain":false,"enablePrPreview":"","enableGitBisect":""};let isDevSpogDomain=!1;window.__databricks_isSpogDomain=window.__DATABRICKS_CONFIG__?.isSpogDomain??isDevSpogDomain,window.__databricks_workspaceParam=normalizeAndReturnWorkspaceParam();const isSpog=window.__databricks_isSpogDomain,workspaceParam=window.__databricks_workspaceParam,isSpogAccount=isSpog&&void 0===workspaceParam;function getParams(r){let o;const e=/\+/g,a=/([^&=]+)=?([^&]*)/g,n=function(r){return decodeURIComponent(r.replace(e," "))},t={};for(o=a.exec(r);o;)t[n(o[1])]=n(o[2]),o=a.exec(r);return t}function normalizeAndReturnWorkspaceParam(){const r=getParams(window.location.search.substr(1)),o=r?.o??"",e=/^\d+/.exec(o);if(e&&e[0]!==o){r.o=e[0];const o=new URL(window.location.href);o.search=new URLSearchParams(r),history.replaceState(null,"",o.toString())}return null===e?void 0:e[0]}const fetchWithErrorInfo=function(){let r=null;try{r=fetch.apply(this,arguments)}catch(r){throw r.message=`Error initializing fetch for ${arguments[0]}: ${r.message}`,r}return r.catch((r=>{throw r.message=`Error while fetching ${arguments[0]}: ${r.message}`,r}))},orgIdHeaders=workspaceParam?{"X-Databricks-Org-Id":workspaceParam.toString()}:void 0;if(!isSpogAccount){const r=fetchWithErrorInfo("/pub-conf",{headers:orgIdHeaders}).then((r=>{if(200!==r.status)throw new Error("Pub-conf Prefetch error: "+r.status);return r.json()})).then((r=>window.pubConf=r)),o=fetchWithErrorInfo("/workspaces",{headers:orgIdHeaders}).then((r=>{if(200!==r.status)throw new Error("Workspaces Prefetch error: "+r.status);return r.json()})).then((r=>window.workspaces=r));window.prefetchedPublicConfProm=r,window.prefetchedWorkspacesProm=o}
-    </script>
-    <link rel="icon" href="https://ui-assets.cloud.databricks.com/favicon.ico">
-    <script>
-        function setNoCdnAndReload() {
-      document.cookie = `x-databricks-cdn-inaccessible=true; path=/; max-age=86400`;
-      const metric = 'cdnFallbackOccurred';
-      const browserUserAgent = navigator.userAgent;
-      const browserTabId = window.browserTabId;
-      const performanceEntry = performance.getEntriesByType('resource').filter(e => e.initiatorType === 'script').slice(-1)[0]
-      sessionStorage.setItem('databricks-cdn-fallback-telemetry-key', JSON.stringify({ tags: { browserUserAgent, browserTabId }, performanceEntry}));
-      window.location.reload();
-  }
-    </script>
-    <script>
-        // Set a manual timeout for dropped packets to CDN
-  function loadScriptWithTimeout(src, timeout) {
-     return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-          script.defer = true;
-          script.src = src;
-          script.onload = resolve;
-          script.onerror = reject;
-          document.head.appendChild(script);
-          setTimeout(() => {
-              reject(new Error('Script load timeout'));
-          }, timeout);
-      });
-  }
-  loadScriptWithTimeout('https://ui-assets.cloud.databricks.com/static/js/js/main.ab7f2d9c.js', 10000).catch(setNoCdnAndReload);
-    </script>
-</head>
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
-<body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script>
-        const startupHangTimestampLocalStorageKey="startupHangTimestamp",startupHangRecencyThresholdMs=12e4,telemetryEndpoint="/telemetry?t=",uiModuleName="workspaceUiHost";function shouldIgnoreError(e){return e.indexOf("could not determine workspace")>=0||"Not implemented on this platform"===e||"Uncaught TypeError: Cannot redefine property: googletag"===e}function generateUuidV4(){const e=window.crypto?.randomUUID?.();return e||"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,(e=>{const t=16*Math.random()|0;return("x"===e?t:3&t|8).toString(16)}))}function networkConnectivityTags(){const e=window.navigator.onLine,t=window.navigator.connection?.rtt??-1,n=window.navigator.connection?.downlink??-1;return{browserNavigatorOnline:e,browserConnectionEstimatedRtt:t,browserConnectionEstimatedDownlink:n,browserConnected:e&&t>0&&n>0}}window.__databricks_networkConnectivityTags=networkConnectivityTags;const browserUserAgent=navigator.userAgent;let shouldLogTelemetry=!0;if(window.__DATABRICKS_SAFE_FLAGS__?.["databricks.fe.infra.enableBlockingTelemetryByUserAgent"]){const e=["bingbot","RedTeamGlobal"].some((e=>browserUserAgent.includes(e)));shouldLogTelemetry=!e}function createTelemetryRequestBody(e,t={},n=null){const o=Date.now(),r={eventId:generateUuidV4(),metric:e,tags:{...t,...networkConnectivityTags(),browserTabId:window.browserTabId,browserUserAgent:browserUserAgent,tabStartTimestampMillis:window.tabStartTimestampMillis,eventWindowTime:window.performance.now()},ts:o};return n&&(r.blob=n),JSON.stringify({uploadTime:o,items:[JSON.stringify(r)]})}function recordTelemetry(e,t={},n=""){if(shouldLogTelemetry){const o={method:"POST",credentials:"include",body:createTelemetryRequestBody(e,t,n),headers:orgIdHeaders};fetch("/telemetry?t="+Date.now(),o)}}Object.defineProperty(window,"browserTabId",{value:generateUuidV4()}),Object.defineProperty(window,"tabStartTimestampMillis",{value:window.__DATABRICKS_CONFIG__?.tabStartTimestampMillis??Date.now()}),window.recordTelemetry=recordTelemetry,recordTelemetry("uiInit",{uiModule:uiModuleName,eventId:"init",eventClientSource:uiModuleName,eventType:"init"});let logCount=0;function error_handler(e,t,n,o,r){logCount++>4||shouldIgnoreError(e)||recordTelemetry("uncaughtJsException",{eventType:"jsExceptionV3",jsExceptionMessage:e,jsExceptionSource:t,jsExceptionLineno:n,jsExceptionColno:o,jsExceptionBeforeInit:!0},r&&r.stack&&r.stack.toString())}window.onerror=error_handler,window.onunhandledrejection=function(e){error_handler(String(e.reason),null,null,null,e.reason)};let hasLoggedPageExitBeforeAppInitComplete=!1;function sendBeaconOnPageExit(e){if(navigator.sendBeacon&&shouldLogTelemetry&&!hasLoggedPageExitBeforeAppInitComplete){const t=e&&e.type||"unknown",n=(Date.now(),createTelemetryRequestBody("uiInit",{eventType:"pageExitBeforeAppInitComplete",eventName:t,eventClientSource:uiModuleName}));navigator.sendBeacon("/telemetry?t="+Date.now(),n),hasLoggedPageExitBeforeAppInitComplete=!0}}function hasStartupHangTimerOccurredRecently(){const e=window.localStorage?.getItem("startupHangTimestamp");if(e){const t=parseInt(e,10);return Date.now()-t<12e4}return!1}function isNetworkScriptLoadIssue(e){if(!e)return!1;const{name:t,responseStatus:n}=e,o=void 0!==n&&[0].includes(n),r=t?.includes(".js")&&t.includes("&retry-attempt=3"),i=/(?:main|login)(?:\.[a-zA-Z0-9]+)?\.js/.test(t);return o&&(r||i)}function getUnsuccessfulScriptLoadResponseStatusCodes(){const e={};return performance.getEntriesByType("resource").filter((e=>"script"===e.initiatorType||"link"===e.initiatorType)).map((e=>isNetworkScriptLoadIssue(e)?[e.name,e.responseStatus]:void 0)).filter(Boolean).forEach((([t,n])=>{void 0===e[t]&&(e[t]=[]),e[t].push(n)})),e}window.addEventListener("beforeunload",sendBeaconOnPageExit),window.addEventListener("unload",sendBeaconOnPageExit),window.addEventListener("pagehide",sendBeaconOnPageExit),window.cleanupAfterAppInit=()=>{window.removeEventListener("beforeunload",sendBeaconOnPageExit),window.removeEventListener("unload",sendBeaconOnPageExit),window.removeEventListener("pagehide",sendBeaconOnPageExit)},isSpogAccount||(window.startupHangTimer=setTimeout((()=>{hasStartupHangTimerOccurredRecently()?recordTelemetry("uiInit",{uiModule:"workspaceUiHost",eventId:"startupHangThrottle",eventClientSource:"workspaceUiHost",eventType:"startupHangThrottle"}):(recordTelemetry("uiInit",{uiModule:uiModuleName,eventId:"startupHang",eventClientSource:uiModuleName,eventType:"startupHang"}),window.localStorage?.setItem("startupHangTimestamp",Date.now().toString()))}),6e4)),isSpogAccount||(window.__DATABRICKS_SAFE_FLAGS__?.["databricks.fe.infra.enableStartupAppInitSNRAlerting"]&&(window.startupAppInitSNR=setInterval((()=>{const e=Object.entries(getUnsuccessfulScriptLoadResponseStatusCodes());if(e.length>0){const t=JSON.stringify({failedNetworkScripts:e}),n={uiModule:uiModuleName,eventId:"ClientNetworkScriptLoadFailure",eventClientSource:uiModuleName,eventType:"clientNetworkScriptLoadFailure"};recordTelemetry("uiInit",n),recordTelemetry("codeMonCounter",n,t),clearInterval(window.startupAppInitSNR),window?.cleanupAfterAppInit(),clearTimeout(window?.startupHangTimer)}}),1e3)),function(){const{configUsingParamProm:e,configUsingParamOrgId:t,flagsUsingParamProm:n}=function(){let e=null,t=null,n=null;return orgIdHeaders&&(t=workspaceParam.toString(),e=fetchWithErrorInfo("/config",{headers:orgIdHeaders}),n=fetchWithErrorInfo("/ui-flags",{headers:orgIdHeaders})),{configUsingParamProm:e,flagsUsingParamProm:n,configUsingParamOrgId:t}}(),o=async function(e,n){await Promise.all([window.prefetchedPublicConfProm,window.prefetchedWorkspacesProm]);const o=function(e,t){if(workspaceParam)return workspaceParam;if(t.inferOrgIdFromDeploymentName){const n=window.location.hostname.split(".").slice(0,t.numDeploymentNameHostnameLabels).join("."),o=e.filter((e=>n===e.deploymentName));if(o.length>0)return o[0].orgId}if(t.redirectBrowserOnWorkspaceSelection)return null;const n=e.filter((e=>!e.needsConfirmation));return 1===n.length?n[0].orgId:null}(window.workspaces,window.pubConf);let r;if(n&&o&&o===t)r=await n;else{if(null==o)throw new Error("could not determine workspace");r=await fetchWithErrorInfo(e,{headers:{"X-Databricks-Org-Id":o.toString()}})}if(200!==r.status)throw new Error(`Prefetch error for ${e}:`+r.status);return await r.json()};window.prefetchedSettingsProm=o("/config",e),window.prefetchedFlagsProm=o("/ui-flags",n)}())
-    </script>
-    <script>
-        const preloadedScripts=new Set;function insertPreloadTag(s,c,n,j){const h=document.createElement("link");h.rel="preload",h.fetchPriority=n;const u=window.__DATABRICKS_CONFIG__.publicPath?.monolith??"/";h.href=(j&&u||"/")+s,h.as=s.endsWith(".css")?"style":"script","script"===h.as&&0!==h.href.indexOf(window.location.origin+"/")&&(h.crossOrigin="anonymous"),document.head.appendChild(h)}function preload(s,c=!0){s.forEach((s=>{if(preloadedScripts.has(s))return;preloadedScripts.add(s);const n=s.endsWith(".css")?"style":"script";insertPreloadTag(s,n,"style"===n?"low":"high",c)}))}if(isSpogAccount)preload(["login/vendor-coreVendors.a4aeb001.chunk.js","js/9023.80319a3f.chunk.js","js/50573.56bec413.chunk.js","js/88102.4b32898c.chunk.js","login/66384.68d7428b.chunk.js","login/79331.3328b5dc.chunk.js","login/24206.0d9df677.chunk.js","login/43884.ab880b0d.chunk.js","login/47141.ae66ee1b.chunk.js","login/25615.aa5374a7.chunk.js","login/24909.cc09bbc7.chunk.js","login/78450.b49cb895.chunk.js","login/36186.2b16aee8.chunk.js","login/13931.e7a63e4b.chunk.js","js/17467.01cc5f54.chunk.js","login/24914.fce8ca1a.chunk.js","js/61322.3a8ae1d9.chunk.js","js/72266.7ff92fb4.chunk.js","login/81535.614066f9.chunk.js","js/16005.bbedbe2d.chunk.js","js/61581.c114c698.chunk.js","js/51519.4d75def0.chunk.js","js/74493.99304134.chunk.js","js/73459.d72e9171.chunk.js","js/99443.0b4c2bae.chunk.js","js/24460.a9a8705d.chunk.js","js/35831.62034b90.chunk.js","js/47025.2ddffd5b.chunk.js","js/84881.1d2decee.chunk.js","js/85632.1dc13e94.chunk.js","js/1235.5aaada6b.chunk.js","js/45459.3e38eff8.chunk.js","login/80889.71f6c003.chunk.js","login/33093.d74fce86.chunk.js","login/71313.ad059e83.chunk.js","login/30263.67c35de6.chunk.js","js/1306.3cc21c6f.chunk.js","login/37421.4b626cd4.chunk.js","login/13456.fe42d81b.chunk.js","login/71049.155e98ff.chunk.js","login/54738.afcf6109.chunk.js","login/29259.bc58640c.chunk.js","js/51385.0511a875.chunk.js","login/97246.46383c07.chunk.js","login/60652.23299040.chunk.js","js/27386.cfbee52d.chunk.js","js/36554.a67815b7.chunk.js","login/65645.6a42ef72.chunk.js","js/97498.8e3b5156.chunk.js","js/53538.a9def5c5.chunk.js","js/84366.e34a9613.chunk.js","login/34010.201d82c5.chunk.js","js/96323.97159c11.chunk.js","js/87554.96a85880.chunk.js","js/60507.dbdefd16.chunk.js","js/75265.decfafbb.chunk.js","js/40620.dd94ff74.chunk.js","js/63463.16c03df7.chunk.js","js/60294.9d2ff70d.chunk.js","js/68508.92e784ac.chunk.js","js/69997.19cc14cd.chunk.js","js/51074.5375c097.chunk.js","js/accounts-console-app.7f82a2b2.chunk.js","css/74493.5d0148e5.chunk.css","css/35831.fa563a7e.chunk.css","login/87088.a356be26.chunk.css"]);else{const s=window.location.hash,c=window.location.pathname;""===s&&"/"===c&&preload(["js/60680.164bdaff.chunk.js","js/81746.4d626481.chunk.js","js/84881.1d2decee.chunk.js","js/66883.9be3651b.chunk.js","js/15304.c25a74ae.chunk.js","js/88692.8e2c4aba.chunk.js","js/28124.b3293427.chunk.js","js/webapp.navigation.homepage.de5eec78.chunk.js"]),window.__DATABRICKS_SAFE_FLAGS__?.["databricks.fe.infra.bootstrapAccountConsoleFromMonolith"]?preload(["login/vendor-coreVendors.a4aeb001.chunk.js","js/vendor-d3.c9f5773e.chunk.js","login/vendor-jquery.50df3620.chunk.js","login/40919.002a6d7c.chunk.js","js/70691.106d728b.chunk.js","js/31470.52e96806.chunk.js","js/13362.c2c8ea11.chunk.js","js/12725.83ec359d.chunk.js","login/66384.68d7428b.chunk.js","login/79331.3328b5dc.chunk.js","js/79429.83610a22.chunk.js","js/57580.c571b0c6.chunk.js","js/43622.665ec194.chunk.js","login/24206.0d9df677.chunk.js","login/43884.ab880b0d.chunk.js","login/47141.ae66ee1b.chunk.js","login/25615.aa5374a7.chunk.js","login/24909.cc09bbc7.chunk.js","login/78450.b49cb895.chunk.js","login/36186.2b16aee8.chunk.js","login/13931.e7a63e4b.chunk.js","login/92052.8b3f7939.chunk.js","js/17467.01cc5f54.chunk.js","login/24914.fce8ca1a.chunk.js","js/98632.fb88d975.chunk.js","js/61322.3a8ae1d9.chunk.js","js/72266.7ff92fb4.chunk.js","login/81535.614066f9.chunk.js","login/42828.6dc06430.chunk.js","login/92241.3eb77a73.chunk.js","js/16005.bbedbe2d.chunk.js","js/70696.112e133c.chunk.js","js/54801.a2937fcb.chunk.js","js/61581.c114c698.chunk.js","login/2858.4b457ea1.chunk.js","js/51519.4d75def0.chunk.js","js/73459.d72e9171.chunk.js","js/73210.165f00f9.chunk.js","js/61777.3c71c3fe.chunk.js","js/32399.3bb063fe.chunk.js","login/17460.ddb70442.chunk.js","js/99443.0b4c2bae.chunk.js","js/90703.d08a1853.chunk.js","login/52975.e6ed6d2f.chunk.js","login/86208.2c2e1f2c.chunk.js","login/52817.5fab0dac.chunk.js","js/35713.413920f3.chunk.js","js/7733.d8d805a2.chunk.js","login/80889.71f6c003.chunk.js","login/33093.d74fce86.chunk.js","js/62003.5a6e683a.chunk.js","login/71313.ad059e83.chunk.js","login/30263.67c35de6.chunk.js","js/1306.3cc21c6f.chunk.js","login/37421.4b626cd4.chunk.js","login/13456.fe42d81b.chunk.js","login/71049.155e98ff.chunk.js","login/54738.afcf6109.chunk.js","login/29259.bc58640c.chunk.js","js/51385.0511a875.chunk.js","login/97246.46383c07.chunk.js","login/60652.23299040.chunk.js","js/27386.cfbee52d.chunk.js","js/36554.a67815b7.chunk.js","login/65645.6a42ef72.chunk.js","js/50577.82ffb916.chunk.js","js/97498.8e3b5156.chunk.js","js/53538.a9def5c5.chunk.js","js/84366.e34a9613.chunk.js","login/34010.201d82c5.chunk.js","js/96323.97159c11.chunk.js","js/54642.6e44a042.chunk.js","js/16179.b4e7f9bf.chunk.js","js/87554.96a85880.chunk.js","js/44973.868fcbd1.chunk.js","js/60507.dbdefd16.chunk.js","js/75265.decfafbb.chunk.js","js/10401.5e8c24fe.chunk.js","js/40620.dd94ff74.chunk.js","js/61700.40458d3e.chunk.js","js/60294.9d2ff70d.chunk.js","js/19764.5549163c.chunk.js","login/91154.a5fc0ac4.chunk.js","js/1718.5119b404.chunk.js","js/54468.4ef9aeb7.chunk.js","js/workspace-console-optimized-app.91c3a923.chunk.js","login/vendor-jquery.5c80d7f6.chunk.css","login/17460.563792a4.chunk.css","css/90703.14d44b32.chunk.css","login/87088.a356be26.chunk.css","css/54468.17d509fa.chunk.css"]):preload(["login/vendor-coreVendors.a4aeb001.chunk.js","js/vendor-d3.c9f5773e.chunk.js","login/vendor-jquery.50df3620.chunk.js","login/40919.002a6d7c.chunk.js","js/70691.106d728b.chunk.js","js/31470.52e96806.chunk.js","js/13362.c2c8ea11.chunk.js","js/12725.83ec359d.chunk.js","login/66384.68d7428b.chunk.js","login/79331.3328b5dc.chunk.js","js/79429.83610a22.chunk.js","js/57580.c571b0c6.chunk.js","js/43622.665ec194.chunk.js","login/24206.0d9df677.chunk.js","login/43884.ab880b0d.chunk.js","login/47141.ae66ee1b.chunk.js","login/25615.aa5374a7.chunk.js","login/24909.cc09bbc7.chunk.js","login/78450.b49cb895.chunk.js","login/36186.2b16aee8.chunk.js","login/13931.e7a63e4b.chunk.js","login/92052.8b3f7939.chunk.js","js/17467.01cc5f54.chunk.js","login/24914.fce8ca1a.chunk.js","js/98632.fb88d975.chunk.js","js/61322.3a8ae1d9.chunk.js","js/72266.7ff92fb4.chunk.js","login/81535.614066f9.chunk.js","login/42828.6dc06430.chunk.js","login/92241.3eb77a73.chunk.js","js/16005.bbedbe2d.chunk.js","js/70696.112e133c.chunk.js","js/54801.a2937fcb.chunk.js","js/61581.c114c698.chunk.js","login/2858.4b457ea1.chunk.js","js/51519.4d75def0.chunk.js","js/73459.d72e9171.chunk.js","js/73210.165f00f9.chunk.js","js/61777.3c71c3fe.chunk.js","js/32399.3bb063fe.chunk.js","login/17460.ddb70442.chunk.js","js/99443.0b4c2bae.chunk.js","js/90703.d08a1853.chunk.js","login/52975.e6ed6d2f.chunk.js","login/86208.2c2e1f2c.chunk.js","login/52817.5fab0dac.chunk.js","js/35713.413920f3.chunk.js","js/7733.d8d805a2.chunk.js","login/80889.71f6c003.chunk.js","login/33093.d74fce86.chunk.js","js/62003.5a6e683a.chunk.js","login/71313.ad059e83.chunk.js","login/30263.67c35de6.chunk.js","js/1306.3cc21c6f.chunk.js","login/37421.4b626cd4.chunk.js","login/13456.fe42d81b.chunk.js","login/71049.155e98ff.chunk.js","login/54738.afcf6109.chunk.js","login/29259.bc58640c.chunk.js","js/51385.0511a875.chunk.js","login/97246.46383c07.chunk.js","login/60652.23299040.chunk.js","js/27386.cfbee52d.chunk.js","js/36554.a67815b7.chunk.js","login/65645.6a42ef72.chunk.js","js/50577.82ffb916.chunk.js","js/97498.8e3b5156.chunk.js","js/53538.a9def5c5.chunk.js","js/84366.e34a9613.chunk.js","login/34010.201d82c5.chunk.js","js/96323.97159c11.chunk.js","js/54642.6e44a042.chunk.js","js/16179.b4e7f9bf.chunk.js","js/87554.96a85880.chunk.js","js/44973.868fcbd1.chunk.js","js/60507.dbdefd16.chunk.js","js/75265.decfafbb.chunk.js","js/10401.5e8c24fe.chunk.js","js/40620.dd94ff74.chunk.js","js/61700.40458d3e.chunk.js","js/60294.9d2ff70d.chunk.js","js/19764.5549163c.chunk.js","login/91154.a5fc0ac4.chunk.js","js/1718.5119b404.chunk.js","js/54468.4ef9aeb7.chunk.js","js/workspace-console-app.e92b7c53.chunk.js","login/vendor-jquery.5c80d7f6.chunk.css","login/17460.563792a4.chunk.css","css/90703.14d44b32.chunk.css","login/87088.a356be26.chunk.css","css/54468.17d509fa.chunk.css"])}
-    </script>
-    <div id="app-root"></div>
-    <uses-legacy-bootstrap data-wrapped-element-id="title-menu">
-        <div id="title-menu" class="tb-title-menu dropdown-menu" role="menu"></div>
-    </uses-legacy-bootstrap>
-    <uses-legacy-bootstrap data-wrapped-element-id="hidden">
-        <div id="hidden" style="display:none"></div>
-    </uses-legacy-bootstrap>
-    <uses-legacy-bootstrap data-wrapped-element-id="history">
-        <div id="history" style="display:none"></div>
-    </uses-legacy-bootstrap>
-    <uses-legacy-bootstrap data-wrapped-element-id="proxy-endpoints-conn-test-iframe">
-        <div id="proxy-endpoints-conn-test-iframe" style="display:none"></div>
-    </uses-legacy-bootstrap>
-    <script>
-        function addPrefetches(e){}window.__databricks_uiDeployableToCommitHash={monolith:"3387021f3dcf44dba506a92508d6269219e72562"},window.doMonolithUiAssetPrefetches=function(){const e=document.getElementById("monolith-assets");if(!e)return;JSON.parse(e.textContent).forEach((e=>{var t=document.createElement("link");t.rel="prefetch",t.href=e,document.getElementsByTagName("head")[0].appendChild(t)}))}
-    </script>
-    <div id="emotion-container-webapp-css"></div>
-</body>
+      .typing-cursor::after {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 1rem;
+        margin-left: 4px;
+        background-color: #00ff87;
+        animation: blink 1s steps(1) infinite;
+      }
 
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .terminal-output::-webkit-scrollbar {
+        display: none;
+      }
+
+      .terminal-output {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .mac-dock {
+        height: 75px;
+      }
+
+      .mac-dock a {
+        position: relative;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        transition: transform 0.2s ease;
+      }
+
+      .mac-dock img {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.2s ease;
+        transform-origin: bottom center;
+      }
+
+      .mac-dock a:hover img {
+        transform: scale(1.6);
+        z-index: 10;
+      }
+
+      .mac-dock a:hover + a img,
+      .mac-dock a:has(+ a:hover) img {
+        transform: scale(1.3);
+        z-index: 5;
+      }
+
+      .mac-dock a:hover + a + a img,
+      .mac-dock a:has(+ a + a:hover) img {
+        transform: scale(1.1);
+        z-index: 2;
+      }
+
+      @media (max-width: 768px) {
+        .mac-dock {
+          height: 50px;
+          gap: 0.5rem !important;
+          padding: 0.5rem 1rem !important;
+        }
+
+        .mac-dock a {
+          width: 36px !important;
+          height: 36px !important;
+        }
+      }
+
+      @media (max-width: 375px) {
+        .mac-dock {
+          height: 48px;
+          gap: 0.25rem !important;
+          padding: 0.5rem 0.75rem !important;
+        }
+
+        .mac-dock a {
+          width: 32px !important;
+          height: 32px !important;
+        }
+
+        .mac-dock img,
+        .mac-dock a:hover img,
+        .mac-dock a:hover + a img,
+        .mac-dock a:has(+ a:hover) img {
+          transform: scale(1) !important;
+          margin-bottom: 0 !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-black text-green-400 font-mono h-screen flex items-center justify-center p-4">
+    <main class="w-full max-w-3xl h-[400px] sm:h-[500px] bg-[#1e1e1e] rounded-lg shadow-2xl overflow-hidden">
+      <div class="flex items-center gap-2 p-3 bg-[#2c2c2c] sticky top-0 z-10">
+        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        <span class="ml-4 text-gray-300 text-xs">jillian@macbook ~</span>
+      </div>
+
+      <section id="terminal" class="terminal-output relative px-6 py-4 text-sm sm:text-base space-y-1 leading-relaxed h-full overflow-y-auto"></section>
+    </main>
+
+    <!-- macOS dock -->
+    <footer class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <div class="mac-dock flex items-end gap-4 px-6 py-3 bg-white/30 backdrop-blur-md rounded-3xl shadow-lg shadow-black/20">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/fernandezjnl/" target="_blank" title="LinkedIn">
+                <img src="https://img.icons8.com/?size=100&id=xuvGCOXi8Wyg&format=png&color=000000" alt="LinkedIn" />
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/jilliannoreen" target="_blank" title="GitHub">
+                <img src="https://img.icons8.com/?size=100&id=AZOZNnY73haj&format=png&color=000000" alt="GitHub" />
+            </a>
+
+            <!-- Gmail -->
+            <a href="mailto:fernandezjilliannoreenl@gmail.com" title="Email">
+                <img src="https://img.icons8.com/?size=100&id=P7UIlhbpWzZm&format=png&color=000000" alt="Gmail" />
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/jilliannoreen.dev" target="_blank" title="Instagram">
+                <img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram" />
+            </a>
+
+            <!-- Threads -->
+            <a href="https://www.threads.net/@jilliannoreen.dev" target="_blank" title="Threads">
+                <img src="https://img.icons8.com/?size=100&id=AS2a6aA9BwK3&format=png&color=000000" alt="Threads" />
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const terminal = document.getElementById("terminal");
+        const lines = [
+            '<span class="text-blue-400">➜</span> whoami',
+            "> Jillian Noreen — developer, professional Google searcher, still debugging life",
+            "",
+            '<span class="text-blue-400">➜</span> curl https://jilliannoreen.dev',
+            "> 204 No Content — but it’s gonna be ✨ amazing ✨",
+            "",
+            '<span class="text-blue-400">➜</span> git commit -m \"add real content\"',
+            "> warning: commit contains 0 actual content",
+            "",
+            '<span class="text-blue-400">➜</span> git push origin main',
+            "> 🚨 Remote rejected: Not this mess again",
+            "",
+            '<span class="text-blue-400">➜</span> ./progress-tracker',
+            "> [█████-------------] 23% Complete",
+            "> 🧠 Mental status: debugging self",
+            "> ☕ Caffeine level: dangerously low",
+            "",
+            '<span class="text-blue-400">➜</span> sudo make-it-happen',
+            "> Authentication required: please enter confidence password",
+            "> ❌ Incorrect. Try therapy",
+            "",
+            '<span class="text-blue-400">➜</span> echo \"Hello, world!\"',
+            "> Hello! You’ve reached Jillian’s portfolio in progress.",
+            "> Hang tight, it’ll be worth it 💖",
+            "",
+            '<span class="text-blue-400">➜</span> fortune',
+            "> “Great things take time. And even longer with custom fonts.”",
+            "",
+            '<span class="text-blue-400">➜</span> logout',
+            "> Goodbye. Portfolio coming soon™. For real. Maybe.",
+            "",
+        ];
+
+        let lineIndex = 0;
+
+        function typeLine(content, cb) {
+            const p = document.createElement("p");
+            p.innerHTML = '<span class="typing-cursor"></span>';
+            terminal.appendChild(p);
+
+            requestAnimationFrame(() => {
+            p.scrollIntoView({ behavior: "smooth", block: "end" });
+            terminal.scrollTop = terminal.scrollHeight;
+            });
+
+            let charIndex = 0;
+
+            setTimeout(() => {
+            function typeChar() {
+                if (charIndex <= content.length) {
+                p.innerHTML =
+                    content.slice(0, charIndex) +
+                    '<span class="typing-cursor"></span>';
+                charIndex++;
+                terminal.scrollTop = terminal.scrollHeight;
+                setTimeout(typeChar, 20);
+                } else {
+                p.innerHTML = content;
+                if (cb) setTimeout(cb, 400);
+                }
+            }
+
+            typeChar();
+            }, 300);
+        }
+
+        function startTyping() {
+            if (lineIndex >= lines.length) {
+            const finalLine = document.createElement("p");
+            finalLine.innerHTML = '<span class="text-blue-400">➜</span><span class="typing-cursor"></span>';
+            terminal.appendChild(finalLine);
+            return;
+            }
+
+            typeLine(lines[lineIndex], () => {
+            lineIndex++;
+            startTyping();
+            });
+        }
+
+        window.onload = startTyping;
+    </script>
+  </body>
 </html>
